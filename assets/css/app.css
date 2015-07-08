@@ -25,3 +25,8 @@ textarea {
 h4 {
 	float: left;
 }
+
+iframe {
+	width: 100%;
+	height: 100%;
+}
