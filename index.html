@@ -9,18 +9,32 @@
 	<script type="text/javascript" src="assets/js/app.js"></script>
 </head>
 <body>
-	
-		<div id="div_html" class="col-md-6" class="content">
+		<div class="col-md-12 heading">
+			<h4> Select library to include</h4>
+			<select>
+				<option value="" selected>No LIbrary(pure javascript)</option>
+				<option value="http://code.jquery.com/jquery-2.1.3.js">jQuery 2.1.3</option>
+				<option value="http://code.jquery.com/jquery-1.9.1.js">jQuery 1.9.1</option>
+			</select>
+			<button>Click me to execute</button>
+		</div>
+		<div id="div_html" class="content col-md-6">
+			HTML content
+			<textarea>
+				
+			</textarea>
+		</div>
+		<div id="div_lcss" class="content col-md-6">
+			CSS content
 			<textarea></textarea>
 		</div>
-		<div id="div_lcss" class="col-md-6" class="content">
+		<div id="div_js" class="content col-md-6">
+			javascript
 			<textarea></textarea>
 		</div>
-		<div id="div_js" class="col-md-6" class="content">
-			<textarea></textarea>
-		</div>
-		<div id="div_output" class="col-md-6" class="content">
-			<!-- <iframe src="" id="ifram_output"></iframe> -->
+		<div id="div_output" class="content col-md-6">
+
+			<iframe src="" id="ifram_output"></iframe>
 		</div>
 	
 </body>
