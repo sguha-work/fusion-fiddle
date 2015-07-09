@@ -47,3 +47,8 @@ $(document).ready(function() {
 		$('#div_output iframe').attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
 	});
 });
+$(window).load(function() {
+	if($.trim(getJSContent()).length) {
+		$("button").trigger('click');
+	}
+});
