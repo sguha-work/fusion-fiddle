@@ -27,7 +27,13 @@ var fiddle = (function() {
         }),
 
         this.resetHTMLContent = (function() {
-
+            if(configObject.htmlEditor.length) {
+                if(configObject.htmlEditor[0].tagName == "TEXTAREA") {
+                    configObject.htmlEditor.val("");
+                } else {
+                    configObject.htmlEditor.empty()
+                }
+            }
         });
 
         this.prepareFullHTML = (function(htmlContent, cssContent, jsContent, selectedLibrary) {
