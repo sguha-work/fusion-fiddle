@@ -1,43 +1,42 @@
-var fiddle = {
-	getHTMLContent: function() {
-		var htmlContent = $("#div_html textarea").val();
-		return htmlContent
-	},
-	getCSSContent: function() {
-		var cssContent = $("#div_css textarea").val();
-		return cssContent
-	},
-	getJSContent: function() {
-		var jsContent = $("#div_js textarea").val();
-		return jsContent
-	},
-	resetElements: function() {
-		this.resetHTMLContent();
-		this.resetJSContent();
-		this.resetCSSContent();
-	},
-	prepareFullHTML: function(htmlContent, cssContent, jsContent, selectedLibrary) {
-		var finalHTMLContent = '<!DOCTYPE html><html><head>';
-		
-		// adding the library
-		if($.trim(selectedLibrary)) {
-			finalHTMLContent += '<script type="text/javascript" src="'+selectedLibrary+'"></script>';
-		}
+var fiddle = (function() {
+    this.getHTMLContent = (function() {
+            var htmlContent = $("#div_html textarea").val();
+            return htmlContent
+        }),
+        this.getCSSContent = (function() {
+            var cssContent = $("#div_css textarea").val();
+            return cssContent
+        }),
+        this.getJSContent = (function() {
+            var jsContent = $("#div_js textarea").val();
+            return jsContent
+        }),
+        this.resetElements = (function() {
+            this.resetHTMLContent();
+            this.resetJSContent();
+            this.resetCSSContent();
+        }),
+        this.prepareFullHTML = (function(htmlContent, cssContent, jsContent, selectedLibrary) {
+            var finalHTMLContent = '<!DOCTYPE html><html><head>';
 
-		// adding the css
-		finalHTMLContent += "<style>"+cssContent+"</style>";
+            // adding the library
+            if ($.trim(selectedLibrary)) {
+                finalHTMLContent += '<script type="text/javascript" src="' + selectedLibrary + '"></script>';
+            }
 
-		finalHTMLContent += "</head><body>";
+            // adding the css
+            finalHTMLContent += "<style>" + cssContent + "</style>";
 
-		// adding html content
-		finalHTMLContent += htmlContent;
+            finalHTMLContent += "</head><body>";
 
-		// adding the javascript
-		finalHTMLContent += "<script type='text/javascript'>"+jsContent+"</script>";
+            // adding html content
+            finalHTMLContent += htmlContent;
 
-		finalHTMLContent += "</body></html>";
+            // adding the javascript
+            finalHTMLContent += "<script type='text/javascript'>" + jsContent + "</script>";
 
-		return finalHTMLContent;
-	}
-};
+            finalHTMLContent += "</body></html>";
 
+            return finalHTMLContent;
+        })
+});

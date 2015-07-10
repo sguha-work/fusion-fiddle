@@ -1,7 +1,7 @@
 var Fiddle;
 
 $(document).ready(function() {
-	Fiddle = fiddle;
+	Fiddle = new fiddle();
 	$("button").on('click', function() {
 		var htmlContent = Fiddle.getHTMLContent();
 		var cssContent = Fiddle.getCSSContent();
