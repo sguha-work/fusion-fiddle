@@ -6,9 +6,7 @@ $(document).ready(function() {
 	});
 });
 $(window).load(function() {
-	if($.trim(Fiddle.getJSContent()).length) {
-		$("button").trigger('click');
-	} else {
+	if(!$.trim(Fiddle.getJSContent()).length) {
 		Fiddle.resetElements();
 	}
 });
