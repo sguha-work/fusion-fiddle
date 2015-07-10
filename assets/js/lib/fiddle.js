@@ -1,9 +1,13 @@
 
+
 var configObject = ({
     htmlEditor : $("#div_html textarea"),
     cssEditor : $("#div_css textarea"),
-    jsEditor : $("#div_js textarea")
+    jsEditor : $("#div_js textarea"),
+    outputContainer : $('#div_output iframe')
 });
+
+
 var fiddle = (function() {
     this.getHTMLContent = (function() {
             var htmlContent = configObject.htmlEditor.val();
@@ -24,14 +28,39 @@ var fiddle = (function() {
             this.resetHTMLContent();
             this.resetJSContent();
             this.resetCSSContent();
+            this.resetOutput();
         }),
+
+        this.resetOutput = (function() {
+            configObject.outputContainer.attr('src', 'balnk.html');
+        });
 
         this.resetHTMLContent = (function() {
             if(configObject.htmlEditor.length) {
                 if(configObject.htmlEditor[0].tagName == "TEXTAREA") {
                     configObject.htmlEditor.val("");
                 } else {
-                    configObject.htmlEditor.empty()
+                    configObject.htmlEditor.empty();
+                }
+            }
+        });
+
+        this.resetJSContent = (function() {
+            if(configObject.jsEditor.length) {
+                if(configObject.jsEditor[0].tagName == "TEXTAREA") {
+                    configObject.jsEditor.val("");
+                } else {
+                    configObject.jsEditor.empty();
+                }
+            }
+        });        
+
+        this.resetCSSContent = (function() {
+            if(configObject.cssEditor.length) {
+                if(configObject.cssEditor[0].tagName == "TEXTAREA") {
+                    configObject.cssEditor.val("");
+                } else {
+                    configObject.cssEditor.empty();
                 }
             }
         });
@@ -58,5 +87,14 @@ var fiddle = (function() {
             finalHTMLContent += "</body></html>";
 
             return finalHTMLContent;
-        })
+        });
+
+        this.showOutput = (function() {
+            var htmlContent = this.getHTMLContent();
+            var cssContent = this.getCSSContent();
+            var jsContent = this.getJSContent();
+            var selectedLibrary = $("#sel_library").val();
+            var finalHTMLContent = this.prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
+            configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
+        });
 });
