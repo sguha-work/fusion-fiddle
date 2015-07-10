@@ -1,21 +1,35 @@
+
+var configObject = ({
+    htmlEditor : $("#div_html textarea"),
+    cssEditor : $("#div_css textarea"),
+    jsEditor : $("#div_js textarea")
+});
 var fiddle = (function() {
     this.getHTMLContent = (function() {
-            var htmlContent = $("#div_html textarea").val();
+            var htmlContent = configObject.htmlEditor.val();
             return htmlContent
         }),
+
         this.getCSSContent = (function() {
-            var cssContent = $("#div_css textarea").val();
+            var cssContent = configObject.cssEditor.val();
             return cssContent
         }),
+
         this.getJSContent = (function() {
-            var jsContent = $("#div_js textarea").val();
+            var jsContent = configObject.jsEditor.val();
             return jsContent
         }),
+
         this.resetElements = (function() {
             this.resetHTMLContent();
             this.resetJSContent();
             this.resetCSSContent();
         }),
+
+        this.resetHTMLContent = (function() {
+
+        });
+
         this.prepareFullHTML = (function(htmlContent, cssContent, jsContent, selectedLibrary) {
             var finalHTMLContent = '<!DOCTYPE html><html><head>';
 
