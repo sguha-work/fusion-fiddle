@@ -100,6 +100,6 @@ var fiddle = (function() {
             var selectedLibrary = this.getAttachedLibraryInfo();
             var finalHTMLContent = prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
             //configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
-            configObject.outputContainer.html(finalHTMLContent);
+            configObject.outputContainer.attr('data',"data:text/html;charset=utf-8,"+escape(finalHTMLContent));
         });
 });
