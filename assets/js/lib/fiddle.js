@@ -4,7 +4,7 @@ var configObject = ({
     htmlEditor : $("#div_html textarea"),
     cssEditor : $("#div_css textarea"),
     jsEditor : $("#div_js textarea"),
-    outputContainer : $('#div_output iframe')
+    outputContainer : $('#ifram_output')
 });
 
 
@@ -99,6 +99,7 @@ var fiddle = (function() {
             var jsContent = this.getJSContent();
             var selectedLibrary = this.getAttachedLibraryInfo();
             var finalHTMLContent = prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
-            configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
+            //configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
+            configObject.outputContainer.html(finalHTMLContent);
         });
 });
