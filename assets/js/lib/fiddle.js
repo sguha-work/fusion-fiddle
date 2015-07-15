@@ -89,11 +89,15 @@ var fiddle = (function() {
             return finalHTMLContent;
         });
 
+        this.getAttachedLibraryInfo = (function() {
+            return $("#sel_library").val();
+        });
+
         this.showOutput = (function() {
             var htmlContent = this.getHTMLContent();
             var cssContent = this.getCSSContent();
             var jsContent = this.getJSContent();
-            var selectedLibrary = $("#sel_library").val();
+            var selectedLibrary = this.getAttachedLibraryInfo();
             var finalHTMLContent = prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
             configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
         });
