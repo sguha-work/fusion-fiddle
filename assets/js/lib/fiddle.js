@@ -12,30 +12,30 @@ var fiddle = (function() {
     this.getHTMLContent = (function() {
             var htmlContent = configObject.htmlEditor.val();
             return htmlContent
-        }),
+        });
 
         this.getCSSContent = (function() {
             var cssContent = configObject.cssEditor.val();
             return cssContent
-        }),
+        });
 
         this.getJSContent = (function() {
             var jsContent = configObject.jsEditor.val();
             return jsContent
-        }),
+        });
 
         this.resetElements = (function() {
-            this.resetHTMLContent();
-            this.resetJSContent();
-            this.resetCSSContent();
-            this.resetOutput();
-        }),
+            resetHTMLContent();
+            resetJSContent();
+            resetCSSContent();
+            resetOutput();
+        });
 
-        this.resetOutput = (function() {
+        var resetOutput = (function() {
             configObject.outputContainer.attr('src', 'balnk.html');
         });
 
-        this.resetHTMLContent = (function() {
+        var resetHTMLContent = (function() {
             if(configObject.htmlEditor.length) {
                 if(configObject.htmlEditor[0].tagName == "TEXTAREA") {
                     configObject.htmlEditor.val("");
@@ -45,7 +45,7 @@ var fiddle = (function() {
             }
         });
 
-        this.resetJSContent = (function() {
+        var resetJSContent = (function() {
             if(configObject.jsEditor.length) {
                 if(configObject.jsEditor[0].tagName == "TEXTAREA") {
                     configObject.jsEditor.val("");
@@ -55,7 +55,7 @@ var fiddle = (function() {
             }
         });        
 
-        this.resetCSSContent = (function() {
+        var resetCSSContent = (function() {
             if(configObject.cssEditor.length) {
                 if(configObject.cssEditor[0].tagName == "TEXTAREA") {
                     configObject.cssEditor.val("");
@@ -65,7 +65,7 @@ var fiddle = (function() {
             }
         });
 
-        this.prepareFullHTML = (function(htmlContent, cssContent, jsContent, selectedLibrary) {
+        var prepareFullHTML = (function(htmlContent, cssContent, jsContent, selectedLibrary) {
             var finalHTMLContent = '<!DOCTYPE html><html><head>';
 
             // adding the library
@@ -94,7 +94,7 @@ var fiddle = (function() {
             var cssContent = this.getCSSContent();
             var jsContent = this.getJSContent();
             var selectedLibrary = $("#sel_library").val();
-            var finalHTMLContent = this.prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
+            var finalHTMLContent = prepareFullHTML(htmlContent, cssContent, jsContent, selectedLibrary);
             configObject.outputContainer.attr('src',"data:text/html;charset=utf-8," + escape(finalHTMLContent));
         });
 });
